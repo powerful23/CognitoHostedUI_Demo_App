@@ -76,7 +76,8 @@ class App extends Component {
     return (
       <div className="App">
         {authState === 'loading' && (<div>loading...</div>)}
-        {authState === 'signIn' && <CustomButton/>}
+        {/* {authState === 'signIn' && <CustomButton/>} */}
+        {authState === 'signIn' && <OAuthButton/>}
         {authState === 'signedIn' && <button onClick={this.signOut}>Sign out</button>}
       </div>
     );

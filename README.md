@@ -1,44 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting start
 
-## Available Scripts
+1. `npm install`
 
-In the project directory, you can run:
+2. Put the `aws-exports.js` under `src/`
 
-### `npm start`
+3. Change the `oauth` configuration in the `App.js`/`App2.js`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4. `npm start`
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# Different ways using Cognito Hosted UI with Amplify
 
-### `npm test`
+## Using Authenticator/withAuthenticator
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can use `withAuthenticator` or `Authenticator` to wrap your app
+1. In `src/index.js`, comment out Line 4 and activate Line 5
 
-### `npm run build`
+2. As long as the Auth module is configured with `oauth`, the Authentcator will render the `Sign In with AWS` button.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Using OAuth HOC
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+1. In `src/index.js`, comment out Line 5 and activate Line 4
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. In `src/App.js`, comment out Line 79 and activate Line 80
 
-### `npm run eject`
+3. In `src/OAuthButton.js`, you can find a React Component wrapped by the `withOAuth` HOC, and the `props.OAuthSignIn` is passed into the `onClick` props in the `button` element in order to jump to the Hosted UI page.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Using Customized Button
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. In `src/index.js`, comment out Line 5 and activate Line 4
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. In `src/App.js`, comment out Line 80 and activate Line 79
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. In `src/CustomButton.js`, you can switch the url(The Hosted UI, Google Login Page, Facebook Login Page) and assign it to the window location.
